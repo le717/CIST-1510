@@ -1,0 +1,126 @@
+// Websites by Caleb
+// Created 2014 Caleb Ely
+// CIST 1510 - Web Development I
+// Summer Semester 2014
+// Instructor - John Taylor
+// Southeastern Technical College
+
+
+@import "mixins/box-shadow";
+@import "mixins/img-responsive";
+
+::-moz-selection {
+  background-color: $color-white;
+  color: #55BBFF;
+  text-shadow: none;
+}
+
+::selection {
+  background-color: rgba(255, 255, 255, 0.99);
+  color: #55BBFF;
+  text-shadow: none;
+}
+
+hr {
+  color: $color-white;
+  width: 70%;
+  height: 1px;
+  border-top: 1px none;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  min-width: 320px;
+}
+
+a {
+  @extend .text-bold;
+  @extend .text-decoration-none;
+  color: $color-yellow;
+  text-shadow: 0 0 2px $color-black;
+
+  &:hover { @extend .text-decoration-underline; }
+}
+
+body {
+  @extend .text-normal;
+  font-family: $font-family;
+  background-color: $background-color;
+  background: $background;
+  color: $font-color;
+  margin-bottom: 8em;
+}
+
+// <kbd> element styling from http://meta.superuser.com/q/4788
+// with minor changes
+kbd {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  @include box-shadow((0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px $color-white inset));
+  color: #333;
+  display: inline-block;
+  font-family: $font-family;
+  font-size: 0.688em;
+  line-height: 1.4;
+  margin: 0 0.1em;
+  padding: 0.1em 0.6em;
+  text-shadow: 0 1px 0 $color-white;
+  text-indent: 0;
+}
+
+h1, h2, h3, h4, h5, h6 { text-shadow: 1px 1px 3px $color-black, 0 0 2px rgba(0, 0, 0, 0.3); }
+
+p {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+// An invisble border helps structure the table more
+table, tr, th, td { border: 1px solid transparent; }
+
+table {
+  border-spacing: 3px;
+  padding: 3px;
+  th { @extend .text-left; }
+}
+
+// Image responsive resizing
+@include img-responsive(720px);
+
+// Image drop shadow
+.img-shadow { @include box-shadow(0 0 5px #000); }
+
+// Image centering
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Kill link color that surrounds images on <= IE 10
+.img-link { border: none; }
+
+// Commonly used alignments and type styles
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-indent { text-indent: 1em; }
+.text-right { text-align: right; }
+.text-normal { font-weight: 400; }
+.text-bold { font-weight: 700; }
+.text-italic { font-style: italic; }
+.text-decoration-none { text-decoration: none; }
+.text-decoration-underline { text-decoration: underline; }
+.text-small { font-size: 0.8em; }
+.text-smaller { font-size: 0.7em; }
+
+// Navigation links
+.a-white {
+  @extend .text-bold;
+  @extend .text-decoration-none;
+  color: $color-white;
+  text-shadow: 1px 0 3px rgba(0, 0, 0, 0.7);
+
+  &:hover { @extend .text-decoration-underline; }
+}

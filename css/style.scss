@@ -1,0 +1,248 @@
+@charset "UTF-8";
+/*
+ * Websites by Caleb
+ *
+ * Created 2014 Caleb Ely
+ * CIST 1510 - Web Development I
+ * Summer Semester 2014
+ * Instructor - John Taylor
+ * Southeastern Technical College
+ */
+
+
+@import "variables";
+@import "common";
+@import "animations";
+@import "mixins/transform";
+@import "mixins/transition-short";
+@import "mixins/transition-long";
+@import "mixins/webkit-transition-long";
+
+// Side header and logo
+.header {
+  padding-bottom: 10px;
+
+  a { @extend .a-white; }
+
+  h1 {
+    display: inline-block;
+    position: absolute;
+    top: 0.5em;
+    margin-left: 0.2em;
+
+    @media only screen and (max-width: 720px) { top: 1em; }
+  }
+}
+
+#logo {
+  @media only screen and (max-width: 720px) {
+    position: relative;
+    top: 2em;
+  }
+}
+
+// Navigation bar
+.nav {
+  background-color: $color-green;
+  height: 3.438em;
+  position: fixed;
+  right: 0;
+  top: -5px;
+  border-left: 7px solid $color-yellow;
+  padding-left: 10px;
+
+  @include webkit-transition-long(-webkit-transform, 1s, ease-out);
+  @include transition-long(transform, 1s, ease-out);
+
+  @media only screen and (max-width: 720px) { @include transform(translate3d(97.5%, 0, 0)); }
+
+  a { @extend .a-white; }
+
+  ul {
+    list-style: none outside none;
+    line-height: 2.5em;
+    margin: 0;
+    padding: 0;
+
+    li {
+      float: left;
+      padding: 0.55em 0.62em 0.62em 0.62em;
+    }
+  }
+}
+
+// Show/hide nav bar upon click/tap of arrow
+.nav-hidden { @include transform(translate3d(0, 0, 0)); }
+
+.nav-toggle {
+  @extend .a-white;
+  display: none;
+  cursor: pointer;
+  z-index: 1;
+
+  @media only screen and (max-width: 720px) {
+    font-size: 2.6em;
+    position: fixed;
+    display: block;
+
+    @include transform(translate3d(-280%, 22%, 0px));
+    @include webkit-transition-long(-webkit-transform, 1s, ease-out);
+    @include transition-long(transform, 1s, ease-out);
+  }
+}
+
+.content {
+  @media only screen and (min-width: 720px) {
+    margin-left: 10em;
+    margin-right: 10em;
+  }
+  p { @extend .text-indent; }
+}
+
+#lun-minifig-wizard p { @media only screen and (max-width: 720px) { margin-top: 1em; } }
+
+// Contact form
+.form-contact {
+  display: inline-block;
+  margin-left: 32%;
+  margin-top: -2em;
+
+  // Mobile alignment
+  @media only screen and (max-width: 720px) { margin-left: 0; }
+
+  label {
+    display: block;
+    margin-top: 1.2em;
+    width: 6.4em;
+  }
+
+  // Style the text boxes
+  input, textarea {
+    width: 200%;
+    height: 2.2em;
+    border: 1px solid #dedede;
+    padding: 0.4em;
+    font-size: 0.9em;
+    border-radius: 7px;
+
+    // Mobile alignment
+    @media only screen and (max-width: 720px) { width: 140%; }
+    @media only screen and (max-width: 320px) { width: 120%; }
+  }
+
+  // Enlarge the message area more
+  textarea { height: 5em; }
+
+  .form-contact-buttons {
+    @extend .a-white;
+    position: relative;
+    left: 50%;
+    width: 8em;
+    height: 3em;
+    cursor: pointer;
+    font-family: $font-family;
+    font-size: 0.9em;
+    background-color: $color-green;
+    border: none;
+    border-radius: 0.5em;
+    @include box-shadow(1px 2px 10px rgba(0, 0, 0, 0.5));
+    @include transition-short(box-shadow 0.3s ease);
+
+    // Mobile alignment
+    @media only screen and (max-width: 720px) { left: 20%; }
+    @media only screen and (max-width: 320px) { left: 11%; }
+
+    // Hover effect
+    &:hover {
+      @extend .text-decoration-none;
+      @include box-shadow(1px 2px 10px -4px rgba(0, 0, 0, 0.5));
+    }
+  }
+
+  // Bot check
+  .form-robot {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+  }
+}
+
+// Form button icon placement
+.btn-form-icons {
+  position: relative;
+  top: 1px;
+  margin-right: 0.4em;
+}
+
+// Send icon
+#btn-submit span {
+  @extend .btn-form-icons;
+  font-size: 1.1em;
+}
+
+// Reset button and icon
+#btn-reset {
+  @media only screen and (max-width: 720px) { left: 25%; }
+  @media only screen and (max-width: 320px) { left: 15%; }
+  span {
+    @extend .btn-form-icons;
+    font-size: 1.3em;
+  }
+}
+
+// Message sent text
+.form-sent {
+  @extend .text-center;
+  margin-bottom: -0.7em;
+  margin-top: 2em;
+}
+
+// Sticky footer from http://mystrd.at/modern-clean-css-sticky-footer/
+.footer {
+  @extend .text-center;
+  @extend .text-small;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 7.8em;
+  width: 100%;
+
+  a { @media only screen and (max-width: 720px) { font-size: 1.2em; } }
+}
+
+// Blog
+.blog-post {
+  .header {
+    margin-bottom: -0.7em;
+    text-indent: -0.7em;
+    @media only screen and (max-width: 720px) {
+      margin-bottom: -0.4em;
+      text-indent: 0;
+    }
+  }
+
+  .details {
+    text-indent: 0;
+    margin-bottom: 1.5em;
+  }
+
+  .post-content p { max-width: 65em; }
+}
+
+.content-about-me {
+  // Picture on About page
+  #img-about {
+    float: left;
+    margin-bottom: 0.5em;
+    margin-right: 0.8em;
+  }
+
+  p { @extend .text-indent; }
+}
+
+.content-about-site {
+  margin-top: 4em;
+  @media only screen and (max-width: 720px) { margin-top: 0; }
+}

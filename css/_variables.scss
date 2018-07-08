@@ -1,0 +1,20 @@
+// Websites by Caleb
+// Created 2014 Caleb Ely
+// CIST 1510 - Web Development I
+// Summer Semester 2014
+// Instructor - John Taylor
+// Southeastern Technical College
+
+
+// Commonly used colors
+$color-green: rgba(35, 172, 27, 0.72);
+$color-black: #000;
+$color-white: #fff;
+$color-yellow: #ff0;
+$color-bg-blue: #0080c9;
+
+// Site-wide
+$font-family: "Ubuntu", "Open Sans", Arial, sans-serif;
+$font-color: $color-white;
+$background-color: $color-bg-blue;
+$background: $color-bg-blue url("/img/bg.png") repeat fixed;
